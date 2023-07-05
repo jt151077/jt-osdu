@@ -4,7 +4,7 @@ import subprocess
 
 headers={}
 
-def setheaders(bearer):
+def setHeaders(bearer):
   headers = {
     "data-partition-id": "odesprod",
     "Authorization": bearer
