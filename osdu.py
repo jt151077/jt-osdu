@@ -3,10 +3,11 @@ import json
 import subprocess
 
 def setHeaders(bearer):
-  return headers = {
+  headers = {
     "data-partition-id": "odesprod",
     "Authorization": bearer
   }
+  return headers
 
 def get_groups_success_scenario(headers):
   response = requests.get('https://preship.gcp.gnrg-osdu.projects.epam.com/api/entitlements/v2/groups', headers=headers)
