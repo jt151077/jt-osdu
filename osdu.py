@@ -11,7 +11,7 @@ def setHeaders(bearer):
 
 def get_groups_success_scenario(headers):
   response = requests.get('https://preship.gcp.gnrg-osdu.projects.epam.com/api/entitlements/v2/groups', headers=headers)
-  return json.dumps(response.json())
+  return response.json()
 
 
 def formatx(i, key, j, k, r):
