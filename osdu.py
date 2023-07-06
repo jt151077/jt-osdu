@@ -9,6 +9,7 @@ def getHeaders(bearer):
   }
   return headers
 
+
 def get_groups_success_scenario(headers):
   response = requests.get('https://preship.gcp.gnrg-osdu.projects.epam.com/api/entitlements/v2/groups', headers=headers)
   return response.json()
@@ -17,6 +18,7 @@ def get_groups_success_scenario(headers):
 def formatx(i, key, j, k, r):
   val=r[i].split(": ")[1][1-j:-2+j+k]
   return key+": "+val
+
 
 def authorize(client_id, client_secret, output):
   print("Go to this URL in a browser:: https://accounts.google.com/o/oauth2/auth/oauthchooseaccount?access_type=offline&prompt=consent&response_type=code&client_id=605457357143-6h6uqunq67f53m9jeibn38gupd27bsfb.apps.googleusercontent.com&scope=email%20openid%20profile&redirect_uri=https%3A%2F%2Foauth.pstmn.io%2Fv1%2Fbrowser-callback".format(client_id))
