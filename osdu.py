@@ -4,7 +4,7 @@ import subprocess
 
 def getHeaders(bearer):
   headers = {
-    "data-partition-id": "odesprod",
+    "data-partition-id": "m19",
     "Authorization": bearer
   }
   return headers
