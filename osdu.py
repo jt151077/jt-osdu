@@ -10,8 +10,8 @@ def getHeaders(bearer, data_partition_id):
   return headers
 
 
-def get_groups_success_scenario(headers):
-  response = requests.get('https://preship.gcp.gnrg-osdu.projects.epam.com/api/entitlements/v2/groups', headers=headers)
+def get_groups_success_scenario(headers, baseurl):
+  response = requests.get('https://{}/api/entitlements/v2/groups'.format(baseurl), headers=headers)
   return response.json()
 
 
