@@ -24,7 +24,7 @@ def auth_gcp_authorisation_code_flow(client_id, client_secret, output, scope, gr
   data = {
     'client_id': client_id,
     'client_secret': client_secret,
-    'grant_type': 'authorization_code',
+    'grant_type': grant_type,
     'access_type': 'offline',
     'code': urllib.parse.unquote(auth_code),
     'redirect_uri': 'https://oauth.pstmn.io/v1/browser-callback'
