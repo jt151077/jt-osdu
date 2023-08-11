@@ -39,8 +39,8 @@ def auth_gcp_authorisation_code_flow(client_id, client_secret, output, scope, gr
 
 
 
-def auth_azr_authorisation_code_flow(client_id, client_secret, output, scope, grant_type, data_partition_id):
-  print("Go to this URL in a browser::https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/v2.0/authorize?access_type=offline&prompt=consent&response_type=code&client_id={}&scope={}&redirect_uri=https%3A%2F%2Foauth.pstmn.io%2Fv1%2Fbrowser-callback".format(client_id, scope))
+def auth_azr_authorisation_code_flow(client_id, client_secret, output, scope, grant_type, data_partition_id, tenant_id):
+  print("Go to this URL in a browser::https://login.microsoftonline.com/{}/oauth2/v2.0/authorize?access_type=offline&prompt=consent&response_type=code&client_id={}&scope={}&redirect_uri=https%3A%2F%2Foauth.pstmn.io%2Fv1%2Fbrowser-callback".format(tenant_id, client_id, scope))
   auth_code=input("Enter your authorization code: ")
   
   data = {
@@ -53,7 +53,7 @@ def auth_azr_authorisation_code_flow(client_id, client_secret, output, scope, gr
   }
 
   azr_headers = {'Content-Type': 'application/x-www-form-urlencoded'}
-  response = requests.post('https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/v2.0/token', data, headers=azr_headers)
+  response = requests.post('https://login.microsoftonline.com/{}/oauth2/v2.0/token'.format(tenant_id), data, headers=azr_headers)
   
   print ("Login to AZR successful")
 
@@ -61,7 +61,7 @@ def auth_azr_authorisation_code_flow(client_id, client_secret, output, scope, gr
 
 
 
-def auth_azr_credential_flow(client_id, client_secret, scope, grant_type, data_partition_id):
+def auth_azr_credential_flow(client_id, client_secret, scope, grant_type, data_partition_id, tenant_id):
   data = {
     'client_id': client_id,
     'client_secret': client_secret,
@@ -70,7 +70,7 @@ def auth_azr_credential_flow(client_id, client_secret, scope, grant_type, data_p
   }
 
   azr_headers = {'Content-Type': 'application/x-www-form-urlencoded'}
-  response = requests.post('https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/v2.0/token', data, headers=azr_headers)
+  response = requests.post('https://login.microsoftonline.com/{}/oauth2/v2.0/token'.format(tenant_id), data, headers=azr_headers)
   
   print ("Login to AZR successful")
 
