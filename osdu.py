@@ -2,6 +2,18 @@ import requests
 import json
 import subprocess
 import urllib
+import urllib.request
+
+
+def getConfig(url):
+  urllib.request.urlretrieve(url, "jtosdu/config.json")
+  
+  parsed_json = {}
+  with open('jtosdu/config.json') as user_file:
+    parsed_json = json.load(user_file)
+
+  return parsed_json
+
 
 def getHeaders(bearer, data_partition_id):
   headers = {
