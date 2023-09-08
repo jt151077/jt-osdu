@@ -6,8 +6,6 @@ import urllib.request
 
 from google.auth.transport import requests as gcp_requests
 from google.oauth2 import service_account
-CREDENTIAL_SCOPES = ["https://www.googleapis.com/auth/cloud-platform"]
-
 
 def getConfig(url):
   urllib.request.urlretrieve(url, "jtosdu/config.json")
@@ -33,8 +31,8 @@ def get_groups_success_scenario(headers, baseurl):
 
 
 
-def auth_gcp_service_account(key_path, data_partition_id):
-  credentials = service_account.Credentials.from_service_account_file(key_path, scopes=CREDENTIAL_SCOPES)
+def auth_gcp_service_account(key_path, scopes, data_partition_id):
+  credentials = service_account.Credentials.from_service_account_file(key_path, scopes=scopes)
   credentials.refresh(gcp_requests.Request())
   return getHeaders(("Bearer {}").format(credentials.token), data_partition_id)
   
